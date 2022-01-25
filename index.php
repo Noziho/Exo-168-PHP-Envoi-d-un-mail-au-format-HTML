@@ -8,20 +8,35 @@
  */
 
 $to = [
-    'j.conan@fondationface.org',
-    ...
+    'noah.decroix3@gmail.com',
+    'yskaa59570@gmail.com',
 ];
 
-$html = '
-    <html lang="fr">
+$html = "
+    <html lang='fr'>
         <head>
             <title>Mes actualités</title>
         </head>
         <body>
             <div>
-                <!-- Vos actualités ici -->
+                Ah ça oui !
             </div>
         </body>
     </html>
-';
+";
+$headers = [
+    'reply-To' => 'noah.decroix3@gmail.com',
+    'X-Mailer' => 'PHP/' . phpversion(),
+    'Mime-Version' => '1.0',
+    'Content-type' => 'text/html; charset=utf-8',
+];
+foreach ($to as $value) {
+    $sucess = mail($value, 'Mon sujet', $html, $headers);
+    if (!$sucess) {
+        echo 'Le mail na pas été envoyé à ' .$value ."<br>";
+    }
+    else {
+        echo 'Le mail à bien été envoyer à ' . $value . "<br>";
+    }
+}
 
